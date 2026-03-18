@@ -6,62 +6,75 @@
 <title>Sunny Computer CSC Centre</title>
 
 <style>
-body {
-    font-family: Arial;
-    margin: 0;
-    background: #eef2f7;
-}
+body { font-family: Arial; margin:0; background:#f4f6f9; }
 
 header {
-    background: #004aad;
-    color: white;
-    padding: 15px;
-    text-align: center;
+    background:#0077cc;
+    color:white;
+    text-align:center;
+    padding:15px;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
-    padding: 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:15px;
+    padding:20px;
 }
 
 .card {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
 }
 
-.card h3 {
-    color: #004aad;
-}
+.card h3 { color:#0077cc; }
 
 input, select {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0 10px;
+    width:100%;
+    padding:8px;
+    margin:5px 0 10px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background: #004aad;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    width:100%;
+    padding:10px;
+    background:#0077cc;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
 }
 
-button:hover {
-    background: #003080;
+button:hover { background:#005fa3; }
+
+.login-box {
+    max-width:300px;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+#adminPanel { display:none; padding:20px; }
+
+table {
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th, td {
+    border:1px solid #ccc;
+    padding:10px;
 }
 
 footer {
-    text-align: center;
-    background: #222;
-    color: white;
-    padding: 10px;
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:10px;
 }
 </style>
 
@@ -70,118 +83,192 @@ footer {
 
 <header>
     <h1>Sunny Computer CSC Centre</h1>
+    <p>All Government Services Under One Roof</p>
 </header>
 
 <div class="container">
 
-<!-- PAN Card -->
+<!-- PAN -->
 <div class="card">
-    <h3>PAN Card</h3>
-    <form>
-        <input type="text" placeholder="Full Name" required>
-        <input type="text" placeholder="Mobile Number" required>
-        <select>
-            <option>New</option>
-            <option>Correction</option>
-        </select>
-        <button type="submit">Apply</button>
-    </form>
+<h3>PAN Card (New / Correction)</h3>
+<form onsubmit="saveData(event,'PAN Card')">
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Mobile Number" required>
+<select>
+<option>New</option>
+<option>Correction</option>
+</select>
+<button>Submit</button>
+</form>
 </div>
 
-<!-- Voter ID -->
+<!-- Voter -->
 <div class="card">
-    <h3>Voter ID</h3>
-    <form>
-        <input type="text" placeholder="Full Name" required>
-        <input type="text" placeholder="Mobile Number" required>
-        <select>
-            <option>New</option>
-            <option>Correction</option>
-        </select>
-        <button type="submit">Apply</button>
-    </form>
+<h3>Voter ID (New / Correction)</h3>
+<form onsubmit="saveData(event,'Voter ID')">
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Mobile Number" required>
+<select>
+<option>New</option>
+<option>Correction</option>
+</select>
+<button>Submit</button>
+</form>
 </div>
 
 <!-- Passport -->
 <div class="card">
-    <h3>Passport Assistance</h3>
-    <form>
-        <input type="text" placeholder="Full Name" required>
-        <input type="text" placeholder="Mobile Number" required>
-        <button type="submit">Apply</button>
-    </form>
+<h3>Passport Application Assistance</h3>
+<form onsubmit="saveData(event,'Passport')">
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Mobile Number" required>
+<button>Submit</button>
+</form>
 </div>
 
 <!-- Ayushman -->
 <div class="card">
-    <h3>Ayushman Bharat Card</h3>
-    <form>
-        <input type="text" placeholder="Full Name" required>
-        <input type="text" placeholder="Mobile Number" required>
-        <button type="submit">Apply</button>
-    </form>
+<h3>Ayushman Bharat Card</h3>
+<form onsubmit="saveData(event,'Ayushman')">
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Mobile Number" required>
+<button>Submit</button>
+</form>
 </div>
 
 <!-- E-Shram -->
 <div class="card">
-    <h3>E-Shram Card</h3>
-    <form>
-        <input type="text" placeholder="Full Name" required>
-        <input type="text" placeholder="Mobile Number" required>
-        <button type="submit">Apply</button>
-    </form>
+<h3>E-Shram Card</h3>
+<form onsubmit="saveData(event,'E-Shram')">
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Mobile Number" required>
+<button>Submit</button>
+</form>
 </div>
 
 <!-- Certificates -->
 <div class="card">
-    <h3>Caste / Income / Domicile</h3>
-    <form>
-        <select>
-            <option>Caste Certificate</option>
-            <option>Income Certificate</option>
-            <option>Domicile Certificate</option>
-        </select>
-        <input type="text" placeholder="Full Name" required>
-        <input type="text" placeholder="Mobile Number" required>
-        <button type="submit">Apply</button>
-    </form>
+<h3>Caste / Income / Domicile Certificate</h3>
+<form onsubmit="saveData(event,'Certificate')">
+<select>
+<option>Caste Certificate</option>
+<option>Income Certificate</option>
+<option>Domicile Certificate</option>
+</select>
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Mobile Number" required>
+<button>Submit</button>
+</form>
 </div>
 
 <!-- Udyam -->
 <div class="card">
-    <h3>Udyam Registration (MSME)</h3>
-    <form>
-        <input type="text" placeholder="Business Name" required>
-        <input type="text" placeholder="Mobile Number" required>
-        <button type="submit">Apply</button>
-    </form>
+<h3>Udyam Registration (MSME)</h3>
+<form onsubmit="saveData(event,'Udyam')">
+<input type="text" placeholder="Business Name" required>
+<input type="text" placeholder="Mobile Number" required>
+<button>Submit</button>
+</form>
 </div>
 
 <!-- Online Services -->
 <div class="card">
-    <h3>Online Services</h3>
-    <ul>
-        <li>Online Forms</li>
-        <li>Print / Scan / Photocopy</li>
-        <li>Lamination</li>
-        <li>E-Filing</li>
-        <li>TDS Application</li>
-    </ul>
+<h3>Online Forms & Government Schemes</h3>
+<form onsubmit="saveData(event,'Online Service')">
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Mobile Number" required>
+<button>Submit</button>
+</form>
+</div>
+
+<!-- Print & Others -->
+<div class="card">
+<h3>Print / Scan / Lamination / E-Filing / TDS</h3>
+<form onsubmit="saveData(event,'Print Service')">
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Mobile Number" required>
+<button>Submit</button>
+</form>
 </div>
 
 <!-- Contact -->
 <div class="card">
-    <h3>Contact</h3>
-    <p><b>Call:</b> 9435091694</p>
-    <p><b>WhatsApp:</b> 8638103439</p>
-    <p><b>Address:</b> Sarisha, Silchar Road, Sribhumi, Assam 788713</p>
+<h3>Contact</h3>
+<p><b>Call:</b> 9435091694</p>
+<p><b>WhatsApp:</b> 8638103439</p>
+<p><b>Address:</b> Sarisha, Silchar Road, Sribhumi, Assam 788713</p>
 </div>
 
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="login-box">
+<h3>Admin Login</h3>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+<h2 style="text-align:center;">Customer Details</h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Name</th>
+<th>Mobile</th>
+</tr>
+</thead>
+<tbody id="dataTable"></tbody>
+</table>
 </div>
 
 <footer>
-    © 2026 Sunny Computer CSC Centre
+© 2026 Sunny Computer CSC Centre
 </footer>
+
+<script>
+function saveData(e, service){
+e.preventDefault();
+let form = e.target;
+let name = form[0].value;
+let mobile = form[1].value;
+
+let data = JSON.parse(localStorage.getItem("customers")) || [];
+data.push({service,name,mobile});
+localStorage.setItem("customers", JSON.stringify(data));
+
+alert("Submitted Successfully!");
+form.reset();
+}
+
+function login(){
+let u=document.getElementById("username").value;
+let p=document.getElementById("password").value;
+
+if(u==="CSCSUNNY" && p==="12345"){
+document.getElementById("adminPanel").style.display="block";
+loadData();
+}else{
+alert("Wrong Login!");
+}
+}
+
+function loadData(){
+let data=JSON.parse(localStorage.getItem("customers"))||[];
+let table=document.getElementById("dataTable");
+table.innerHTML="";
+
+data.forEach(d=>{
+table.innerHTML+=`<tr>
+<td>${d.service}</td>
+<td>${d.name}</td>
+<td>${d.mobile}</td>
+</tr>`;
+});
+}
+</script>
 
 </body>
 </html>
