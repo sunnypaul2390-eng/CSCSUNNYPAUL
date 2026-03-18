@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<style>
+table {width:100%; border-collapse:collapse;}
+th, td {padding:10px; border:1px solid #ccc;}
+th {background:#145da0; color:white;}
+</style>
+</head>
+
+<body>
+
+<h2>Customer Database</h2>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Mobile</th>
+<th>Service</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tbody id="data"></tbody>
+</table>
+
+<script>
+let customers = JSON.parse(localStorage.getItem("customers")) || [];
+
+let html = "";
+
+customers.forEach((c, i) => {
+    html += `
+    <tr>
+        <td>${c.id}</td>
+        <td>${c.name}</td>
+        <td>${c.mobile}</td>
+        <td>${c.service}</td>
+        <td>
+            <select onchange="updateStatus(${i}, this.value)">
+                <option ${c.status=="Processing"?"selected":""}>Processing</option>
+                <option ${c.status=="Approved"?"selected":""}>Approved</option>
+                <option ${c.status=="Completed"?"selected":""}>Completed</option>
+                <option ${c.status=="Rejected"?"selected":""}>Rejected</option>
+            </select>
+        </td>
+        <td><button onclick="deleteRow(${i})">Delete</button></td>
+    </tr>`;
+});
+
+data.innerHTML = html;
+
+function updateStatus(i, status){
+    customers[i].status = status;
+    localStorage.setItem("customers", JSON.stringify(customers));
+}
+
+function deleteRow(i){
+    customers.splice(i,1);
+    localStorage.setItem("customers", JSON.stringify(customers));
+    location.reload();
+}
+</script>
+
+</body>
+</html>
