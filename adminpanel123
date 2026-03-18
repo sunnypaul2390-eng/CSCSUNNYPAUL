@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunny Computer CSC Centre</title>
+
+<style>
+body { font-family: Arial; margin: 0; background: #eef2f7; }
+header { background: #004aad; color: white; padding: 15px; text-align: center; }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #004aad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover { background: #003080; }
+
+#adminPanel {
+    display: none;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.login-box {
+    max-width: 300px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>Sunny Computer CSC Centre</h1>
+</header>
+
+<!-- USER SECTION -->
+<div class="container">
+
+<div class="card">
+    <h3>PAN Card</h3>
+    <form onsubmit="saveData(event,'PAN Card')">
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Mobile Number" required>
+        <button type="submit">Apply</button>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Voter ID</h3>
+    <form onsubmit="saveData(event,'Voter ID')">
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Mobile Number" required>
+        <button type="submit">Apply</button>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Passport</h3>
+    <form onsubmit="saveData(event,'Passport')">
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Mobile Number" required>
+        <button type="submit">Apply</button>
+    </form>
+</div>
+
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="login-box">
+    <h3>Admin Login</h3>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+    <h2 style="text-align:center;">Customer Details</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Name</th>
+                <th>Mobile</th>
+            </tr>
+        </thead>
+        <tbody id="dataTable"></tbody>
+    </table>
+</div>
+
+<script>
+function saveData(event, service) {
+    event.preventDefault();
+    let form = event.target;
+    let name = form[0].value;
+    let mobile = form[1].value;
+
+    let data = JSON.parse(localStorage.getItem("customers")) || [];
+    data.push({service, name, mobile});
+
+    localStorage.setItem("customers", JSON.stringify(data));
+
+    alert("Application Submitted!");
+    form.reset();
+}
+
+function login() {
+    let user = document.getElementById("username
