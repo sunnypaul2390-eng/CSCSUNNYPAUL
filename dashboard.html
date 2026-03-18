@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<div id="data"></div>
+
+<script>
+let applications = JSON.parse(localStorage.getItem("apps")) || [];
+
+function loadData() {
+    let html = "";
+
+    applications.forEach((app, index) => {
+        html += `
+        <div style="border:1px solid black; margin:10px; padding:10px;">
+            <p>Name: ${app.name}</p>
+            <p>Mobile: ${app.mobile}</p>
+            <p>Service: ${app.service}</p>
+            <p>Status: ${app.status}</p>
+
+            <button onclick="approve(${index})">Approve</button>
+            <button onclick="reject(${index})">Reject</button>
+        </div>
+        `;
+    });
+
+    document.getElementById("data").innerHTML = html;
+}
+
+function approve(i) {
+    applications[i].status = "Approved";
+    localStorage.setItem("apps", JSON.stringify(applications));
+    loadData();
+}
+
+function reject(i) {
+    applications[i].status = "Rejected";
+    localStorage.setItem("apps", JSON.stringify(applications));
+    loadData();
+}
+
+loadData();
+</script>
+
+</body>
+</html>
