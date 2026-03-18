@@ -285,4 +285,75 @@ footer {
     <img src="https://cdn-icons-png.flaticon.com/512/3135/3135679.png" width="60">
     <h3>TDS Applications</h3>
 </div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, push, onValue, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  databaseURL: "YOUR_DB_URL",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "XXXX",
+  appId: "XXXX"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// MAKE GLOBAL
+window.db = db;
+window.ref = ref;
+window.push = push;
+window.onValue = onValue;
+window.update = update;
+</script>
+<script>
+document.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let id = "SC" + Date.now();
+
+    let data = {
+        id: id,
+        name: name.value,
+        mobile: mobile.value,
+        service: service.value,
+        desc: desc.value,
+        status: "Processing"
+    };
+
+    push(ref(db, "customers"), data);
+
+    msg.innerHTML = "✅ Submitted! Your ID: <b>"+id+"</b>";
+    form.reset();
+});
+</script>
+<script>
+function track(){
+    let searchId = document.getElementById("trackId").value;
+    let result = document.getElementById("result");
+
+    onValue(ref(db, "customers"), snapshot => {
+        let found = false;
+
+        snapshot.forEach(child => {
+            let c = child.val();
+
+            if(c.id === searchId){
+                result.innerHTML = `
+                <p><b>Name:</b> ${c.name}</p>
+                <p><b>Service:</b> ${c.service}</p>
+                <p><b>Status:</b> ${c.status}</p>
+                `;
+                found = true;
+            }
+        });
+
+        if(!found){
+            result.innerHTML = "<p style='color:red;'>Not Found</p>";
+        }
+    });
+}
+</script>
