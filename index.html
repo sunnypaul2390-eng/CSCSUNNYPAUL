@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunny Computer CSC Centre</title>
+
+<style>
+body {margin:0; font-family:Arial; background:#f4f7fb;}
+header {background:#0a3d62; color:white; text-align:center; padding:15px;}
+nav {background:#145da0; text-align:center;}
+nav a {color:white; padding:12px; display:inline-block; text-decoration:none;}
+nav a:hover {background:#0a3d62;}
+
+.hero {
+    background:linear-gradient(to right,#1e90ff,#00b894);
+    color:white; text-align:center; padding:40px;
+}
+
+.section {padding:30px;}
+.section h2 {text-align:center; color:#0a3d62;}
+
+.services {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width:60px;
+    margin-bottom:10px;
+}
+
+.btn {
+    background:#145da0;
+    color:white;
+    padding:8px 12px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.contact {
+    background:#0a3d62;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* FORM POPUP */
+.popup {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.6);
+}
+
+.popup-content {
+    background:white;
+    padding:20px;
+    margin:50px auto;
+    width:90%;
+    max-width:400px;
+    border-radius:10px;
+}
+
+.input {
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Sunny Computer CSC Centre</h1>
+<p>Government Authorized Digital Services</p>
+</header>
+
+<nav>
+<a href="#id">ID Services</a>
+<a href="#cert">Certificates</a>
+<a href="#business">Business</a>
+<a href="#other">Other</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+<h2>All Government Services at One Place</h2>
+</div>
+
+<!-- ID SERVICES -->
+<div class="section" id="id">
+<h2>ID & Card Services</h2>
+<div class="services">
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+<h3>PAN Card</h3>
+<p>New / Correction</p>
+<button class="btn" onclick="openForm('PAN Card')">Apply</button>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+<h3>Voter ID</h3>
+<button class="btn" onclick="openForm('Voter ID')">Apply</button>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/747/747310.png">
+<h3>Passport</h3>
+<button class="btn" onclick="openForm('Passport')">Apply</button>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/4320/4320337.png">
+<h3>Ayushman Card</h3>
+<button class="btn" onclick="openForm('Ayushman Card')">Apply</button>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png">
+<h3>E-Shram Card</h3>
+<button class="btn" onclick="openForm('E-Shram Card')">Apply</button>
+</div>
+
+</div>
+</div>
+
+<!-- CERTIFICATES -->
+<div class="section" id="cert">
+<h2>Certificate Services</h2>
+<div class="services">
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+<h3>Caste Certificate</h3>
+<button class="btn" onclick="openForm('Caste Certificate')">Apply</button>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png">
+<h3>Income Certificate</h3>
+<button class="btn" onclick="openForm('Income Certificate')">Apply</button>
+</div>
+
+</div>
+</div>
+
+<!-- BUSINESS -->
+<div class="section" id="business">
+<h2>Business Services</h2>
+<div class="services">
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135692.png">
+<h3>Udyam Registration</h3>
+<button class="btn" onclick="openForm('Udyam Registration')">Apply</button>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+<h3>Govt Schemes</h3>
+<button class="btn" onclick="openForm('Govt Schemes')">Apply</button>
+</div>
+
+</div>
+</div>
+
+<!-- OTHER -->
+<div class="section" id="other">
+<h2>Other Services</h2>
+<div class="services">
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3022/3022253.png">
+<h3>Print / Scan</h3>
+<button class="btn" onclick="openForm('Print / Scan')">Apply</button>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/1041/1041870.png">
+<h3>Lamination</h3>
+<button class="btn" onclick="openForm('Lamination')">Apply</button>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/833/833314.png">
+<h3>E-Filing</h3>
+<button class="btn" onclick="openForm('E-Filing')">Apply</button>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135679.png">
+<h3>TDS Applications</h3>
+<button class="btn" onclick="openForm('TDS Applications')">Apply</button>
+</div>
+
+</div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+<p>📍 Sarisha, Silchar Road, Sribhumi, Assam - 788713</p>
+<p>📞 9435091694 | 💬 8638103439</p>
+<a href="tel:9435091694" class="btn">Call</a>
+<a href="https://wa.me/918638103439" class="btn">WhatsApp</a>
+</div>
+
+<!-- FORM POPUP -->
+<div class="popup" id="popup">
+<div class="popup-content">
+
+<h3>Apply Service</h3>
+
+<input type="text" id="name" placeholder="Full Name" class="input">
+<input type="tel" id="mobile" placeholder="Mobile Number" class="input">
+<input type="text" id="selectedService" class="input" readonly>
+
+<textarea id="desc" placeholder="Details" class="input"></textarea>
+
+<button class="btn" onclick="submitForm()">Submit</button>
+<button onclick="closeForm()">Close</button>
+
+<p id="msg"></p>
+
+</div>
+</div>
+
+<script>
+function openForm(service){
+    document.getElementById("popup").style.display="block";
+    document.getElementById("selectedService").value=service;
+}
+
+function closeForm(){
+    document.getElementById("popup").style.display="none";
+}
+
+function submitForm(){
+    let name=document.getElementById("name").value;
+    let mobile=document.getElementById("mobile").value;
+    let service=document.getElementById("selectedService").value;
+
+    let msg=`New Customer:
+Name: ${name}
+Mobile: ${mobile}
+Service: ${service}`;
+
+    // WhatsApp direct send
+    window.open(`https://wa.me/919435091694?text=${encodeURIComponent(msg)}`);
+
+    document.getElementById("msg").innerHTML="✅ Sent Successfully!";
+}
+</script>
+
+</body>
+</html>
